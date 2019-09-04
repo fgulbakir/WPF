@@ -1,0 +1,159 @@
+﻿<Window x:Class="WPFExercise.DesktopClient.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:WPFExercise.DesktopClient.ViewModels"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:enum="clr-namespace:WPFExercise.ServiceFoundation.Enum;assembly=WPFExercise.ServiceFoundation"
+        xmlns:converter="clr-namespace:WPFExercise.ServiceFoundation.Converter;assembly=WPFExercise.ServiceFoundation"
+        xmlns:helper="clr-namespace:WPFExercise.DesktopClient.Helper"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance viewModels:FilterViewModel}"        
+        Title="MainWindow" Height="560" Width="840"
+        ResizeMode="NoResize">
+
+        <Window.Resources>
+        <ResourceDictionary>
+            <ObjectDataProvider x:Key="FilterOptionsEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="enum:FilterOptionsEnum" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+            <converter:EnumBindingConverter x:Key="enumBindingConverter"/>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    
+        <Page>
+
+        <Page.Resources>
+            <Style x:Key="CustomButton" TargetType="Button">
+                <Setter Property="Width" Value="150"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontSize" Value="15px"/>
+                <Setter Property="Foreground" Value="#E00D30"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="Background" >
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
+                            <GradientStop Color="#CBDFF7" Offset="0.2"/>
+                            <GradientStop Color="#78A8D9" Offset="0.85"/>
+                            <GradientStop Color="#0D63AE" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="10" Background="{TemplateBinding Background}"
+                                    BorderThickness="1">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                                </ContentPresenter>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+
+            <Style x:Key="CustomTextBox" TargetType="TextBox" >
+                <Setter Property="Width" Value="600"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontSize" Value="15px"/>
+                <Setter Property="Foreground" Value="#0D63AC"/>
+                <Setter Property="Background" Value="#E8EFF5"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="BorderBrush" Value="#E8EFF5"/>
+            </Style>
+
+            <Style x:Key="CustomListBox" TargetType="ListBox" >
+                <Setter Property="Width" Value="600"/>
+                <Setter Property="Height" Value="380"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontSize" Value="15px"/>
+                <Setter Property="Foreground" Value="#0D63AC"/>
+                <Setter Property="Background" Value="#E8EFF5"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="BorderBrush" Value="#E8EFF5"/>
+            </Style>
+
+
+        </Page.Resources>
+
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Grid Background="#DAE4EE">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="400" />
+                    <RowDefinition Height="*" />
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+
+
+                <TextBox Grid.Row="0" Grid.Column="0" helper:InputHelper.IsNumeric="True" IsEnabled="{Binding IsEnableInput,UpdateSourceTrigger=PropertyChanged}"  
+                         Text="{Binding FilteredNumber,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource CustomTextBox}">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                            <Setter Property="Background" Value="#E8EFF5"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+
+                <Button  Grid.Row="0" Grid.Column="1" Style="{StaticResource CustomButton}" Command="{Binding EnterCommand}" Content="OK"></Button>
+
+                <ListBox  Grid.Row="1" Grid.Column="0" Style="{StaticResource CustomListBox}" ItemsSource="{Binding InputValueList,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"  Name="AcceptedNumber">
+                    <ListBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                            <Setter Property="Background" Value="#E8EFF5"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+
+                        </Style>
+
+                    </ListBox.Resources>
+                </ListBox>
+
+                <TextBox  Grid.Row="2" Grid.Column="0" Style="{StaticResource CustomTextBox}" IsReadOnly="true" Text="{Binding OutputValueList,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" >
+                    <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                        <Setter Property="Background" Value="#E8EFF5"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+
+                    </Style>
+                    </TextBox.Resources>
+                </TextBox>
+
+                <Button Grid.Row="2" Grid.Column="1"  Style="{StaticResource CustomButton}" Command="{Binding UpdateCommand}" Content="Update" ></Button>
+
+                <ComboBox Name="ComboFilterItem" IsEnabled="{Binding IsEnableFilter,UpdateSourceTrigger=PropertyChanged}" Background="#E8EFF5" BorderBrush="#0D63AC" Foreground="#0D63AC" FontSize="15px" FontWeight="Bold" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Source={StaticResource FilterOptionsEnum}}" SelectedItem="{Binding SelectedFilterValue,Mode=TwoWay}" Width="150" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10" >
+                    <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                            <TextBlock Background="#E8EFF5" Text="{Binding Converter={StaticResource enumBindingConverter}}"/>
+                    </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+        </Grid>
+        </ScrollViewer>
+    </Page>
+   
+</Window>

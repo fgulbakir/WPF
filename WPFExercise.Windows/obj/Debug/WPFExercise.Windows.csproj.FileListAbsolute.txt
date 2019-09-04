@@ -1,0 +1,11 @@
+D:\FGB\QIAGEN\WPFExercise\WPFExercise.Windows\bin\Debug\WPFExercise.Windows.dll.config
+D:\FGB\QIAGEN\WPFExercise\WPFExercise.Windows\bin\Debug\WPFExercise.Windows.dll
+D:\FGB\QIAGEN\WPFExercise\WPFExercise.Windows\bin\Debug\WPFExercise.Windows.pdb
+D:\FGB\QIAGEN\WPFExercise\WPFExercise.Windows\bin\Debug\EntityFramework.dll
+D:\FGB\QIAGEN\WPFExercise\WPFExercise.Windows\bin\Debug\EntityFramework.SqlServer.dll
+D:\FGB\QIAGEN\WPFExercise\WPFExercise.Windows\bin\Debug\EntityFramework.xml
+D:\FGB\QIAGEN\WPFExercise\WPFExercise.Windows\bin\Debug\EntityFramework.SqlServer.xml
+D:\FGB\QIAGEN\WPFExercise\WPFExercise.Windows\obj\Debug\WPFExercise.Windows.csproj.CoreCompileInputs.cache
+D:\FGB\QIAGEN\WPFExercise\WPFExercise.Windows\obj\Debug\WPFExercise.Windows.csproj.CopyComplete
+D:\FGB\QIAGEN\WPFExercise\WPFExercise.Windows\obj\Debug\WPFExercise.Windows.dll
+D:\FGB\QIAGEN\WPFExercise\WPFExercise.Windows\obj\Debug\WPFExercise.Windows.pdb

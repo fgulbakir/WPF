@@ -1,0 +1,5 @@
+D:\FGB\QIAGEN\WPFExercise\WPFExercise.ServiceFoundation\bin\Debug\WPFExercise.ServiceFoundation.dll
+D:\FGB\QIAGEN\WPFExercise\WPFExercise.ServiceFoundation\bin\Debug\WPFExercise.ServiceFoundation.pdb
+D:\FGB\QIAGEN\WPFExercise\WPFExercise.ServiceFoundation\obj\Debug\WPFExercise.ServiceFoundation.csproj.CoreCompileInputs.cache
+D:\FGB\QIAGEN\WPFExercise\WPFExercise.ServiceFoundation\obj\Debug\WPFExercise.ServiceFoundation.dll
+D:\FGB\QIAGEN\WPFExercise\WPFExercise.ServiceFoundation\obj\Debug\WPFExercise.ServiceFoundation.pdb
